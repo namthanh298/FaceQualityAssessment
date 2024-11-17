@@ -1,7 +1,7 @@
 
 import cv2
 import numpy as np
-from scipy.stats import kurtosis
+from scipy.stats import kurtosis, skew, entropy
 
 
 def calculate_blur_fft(image_path):
