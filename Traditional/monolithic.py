@@ -1,10 +1,8 @@
-import os
 import cv2
 from brisque import BRISQUE
 from fiq.ser_fiq import calc_ser_fiq_score
 from niqe import calc_niqe
-import time
-import random
+import numpy as np
 # from pypiqe import piqe
 
 
@@ -17,9 +15,8 @@ def calc_brisque_score(img):
 def calc_niqe_score(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = cv2.resize(gray, (200,200))
-    print(calc_niqe(gray))
-    score = min(calc_niqe(gray), 1)
-    return 1 - score
+    score = np.sqrt(calc_niqe(gray))
+    return score
 
 def calc_ser_score(img_path):
     # resize image to 112x112
